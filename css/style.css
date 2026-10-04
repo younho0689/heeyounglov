@@ -1,0 +1,54 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar: transparent at top, solid once scrolled */
+#navbar {
+  background-color: transparent;
+}
+
+#navbar.scrolled {
+  background-color: rgba(255, 251, 242, 0.9);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 12px rgba(43, 36, 56, 0.08);
+}
+
+/* Active nav link indicator */
+.nav-link {
+  position: relative;
+  color: #332b61;
+}
+
+.nav-link.active {
+  color: #d92a66;
+}
+
+/* Fade-in-up on scroll (toggled via JS + IntersectionObserver) */
+.fade-target {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-target.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero content should be visible immediately without waiting to scroll */
+#home .fade-target {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.9s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
